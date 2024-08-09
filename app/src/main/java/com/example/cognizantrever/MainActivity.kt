@@ -1,5 +1,7 @@
 package com.example.cognizantrever
 
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
@@ -11,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cognizantrever.databinding.ActivityMainBinding
@@ -18,8 +21,14 @@ import com.example.cognizantrever.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-   lateinit var binding:ActivityMainBinding
-   var TAG = MainActivity::class.java.simpleName
+    lateinit var binding: ActivityMainBinding
+
+    companion object{
+        var mScheduler: JobScheduler? = null
+    }
+
+
+    var TAG = MainActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +77,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-        fun clickHandler(view: View) {
+    fun scheduleJob() {
+        mScheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
+
+        val serviceName = ComponentName(packageName, NotificationJobService::class.java.name)
+        val builder = JobInfo.Builder(0, serviceName)
+            .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+            .setRequiresDeviceIdle(true)
+            .setRequiresCharging(false);
+
+        val myJobInfo = builder.build()
+        mScheduler!!.schedule(myJobInfo)
+
+        Log.i("job","----------------------> CREATED <----------------------")
+    }
+
+    fun cancelJobs() {
+        if (mScheduler != null){
+            mScheduler!!.cancelAll()
+            mScheduler = null
+            Toast.makeText(this, "jobs canceled", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    fun clickHandler(view: View) {
        // EditText nameEdittext = findViewById(R.id.etName)
         var nameEditText : EditText = findViewById(R.id.etName)
         var mainTextView : TextView = findViewById(R.id.tvMain)

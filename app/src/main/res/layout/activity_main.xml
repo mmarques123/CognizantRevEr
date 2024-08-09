@@ -21,107 +21,134 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="9dp"
+        android:backgroundTint="@color/dark_green"
         android:onClick="clickHandler"
         android:text="login"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnStop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMain" />
 
     <EditText
         android:id="@+id/etName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="42dp"
+        android:layout_width="311dp"
+        android:layout_height="55dp"
         android:ems="10"
         android:hint="enter name"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/tvMain"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.877" />
 
     <Button
         android:id="@+id/btnDialer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginBottom="79dp"
+        android:backgroundTint="@color/dark_green"
         android:onClick="openDialer"
         android:text="dialer"
         app:layout_constraintBottom_toTopOf="@+id/etName"
-        app:layout_constraintStart_toStartOf="@+id/etName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/dark_green"
         android:onClick="setAlarm"
         android:text="alarm"
         app:layout_constraintBottom_toTopOf="@+id/btnDialer"
-        app:layout_constraintEnd_toEndOf="@+id/btnDialer" />
+        app:layout_constraintEnd_toStartOf="@+id/btnCalendar"
+        app:layout_constraintStart_toEndOf="@+id/btnBroadcast"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnCalendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/dark_green"
         android:onClick="openMyCalendar"
         android:text="calendar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnDialer"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnBroadcast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:backgroundTint="@color/dark_green"
         android:onClick="sendFlightBroadcast"
         android:text="broadcast"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnAlarm"
+        app:layout_constraintBottom_toTopOf="@+id/btnDialer"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
+        android:backgroundTint="@color/dark_green"
         android:text="start"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnStop"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <Button
         android:id="@+id/btnStop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="61dp"
+        android:backgroundTint="@color/dark_green"
         android:text="stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBind"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toEndOf="@+id/btnStart"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMain" />
 
     <Button
         android:id="@+id/btnBind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="45dp"
+        android:backgroundTint="@color/dark_green"
         android:text="bind"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnStop"
-        app:layout_constraintTop_toTopOf="@+id/btnStop" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <Button
         android:id="@+id/btnUnbind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="5dp"
+        android:backgroundTint="@color/dark_green"
         android:text="unbind"
-        app:layout_constraintEnd_toEndOf="@+id/btnBind"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStop" />
+
+
+    <Button
+        android:id="@+id/btnJob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Job"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnUnbind"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+
+    <Button
+        android:id="@+id/btnUnjob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UnJob"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnUnbind"
         app:layout_constraintTop_toBottomOf="@+id/btnBind" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
