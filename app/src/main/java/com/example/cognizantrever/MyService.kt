@@ -12,12 +12,12 @@ import android.util.Log
  * add 2 nos
  */
 class MyService : Service() {
+
     var TAG = MyService::class.java.simpleName
     private val localBinder = LocalBinder()
 
     inner class LocalBinder : Binder() {
         fun getMyService(): MyService = this@MyService
-
     }
 
         override fun onCreate() {
@@ -39,7 +39,6 @@ class MyService : Service() {
         var player = MediaPlayer.create(this,R.raw.tune)
         player.start()
         return START_STICKY
-
     }
 
     override fun onDestroy() {
@@ -51,6 +50,5 @@ class MyService : Service() {
     override fun onBind(intent: Intent): IBinder {
         Log.i(TAG,"some activity is trying to bind to this service")
         return localBinder
-
     }
 }

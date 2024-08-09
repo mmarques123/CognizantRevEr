@@ -6,8 +6,10 @@
         android:name="android.hardware.telephony"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,11 +21,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CognizantRevEr"
         tools:targetApi="31">
+
+        <service
+            android:name=".NotificationJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
         <service
             android:name=".MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true">
 
+        </service>
+
+
+        <receiver
+            android:name=".CallReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".CallReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
         <receiver
             android:name=".SmsReceiver"
             android:enabled="true"
@@ -32,6 +55,7 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+
 
         <activity
             android:name=".HomeActivity"
